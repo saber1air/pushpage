@@ -1,0 +1,1155 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="css/simplePagination.css">
+    <link rel="stylesheet" href="css/toast.css">
+    <link rel="stylesheet" href="css/zeroModal.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/myStyle.css">
+    <style>
+        .fieldset {
+            margin: 0px;
+        }
+
+        .card-profile-stats {
+            border: 1px solid #cacaca;
+            margin: 0 0 1.25rem;
+            padding: 1.25rem;
+            background: #fefefe;
+        }
+
+        .card-profile-stats .card-profile-stats-intro {
+            text-align: center;
+        }
+
+        .card-profile-stats .card-profile-stats-intro .card-profile-stats-intro-pic {
+            border-radius: 50%;
+            margin: 0 0 1.25rem;
+        }
+
+        .card-profile-stats .card-profile-stats-intro .card-profile-stats-intro-content p:last-child {
+            margin: 0;
+        }
+
+        .card-profile-stats .card-profile-stats-container {
+            text-align: center;
+        }
+
+        .card-profile-stats .card-profile-stats-container .card-profile-stats-statistic {
+            margin: 0 0 1.25rem;
+        }
+
+        .card-profile-stats .card-profile-stats-container .card-profile-stats-statistic p:last-child {
+            margin: 0;
+        }
+
+        .card-profile-stats .card-profile-stats-more .card-profile-stats-more-link {
+            margin: 0;
+            text-align: center;
+            font-size: 1.5rem;
+            color: #0a0a0a;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .card-profile-stats .card-profile-stats-more .card-profile-stats-more-content {
+            display: none;
+        }
+
+        @media print, screen and (min-width: 64em) {
+            .card-profile-stats .card-profile-stats-intro {
+                -webkit-align-items: center;
+                -ms-flex-align: center;
+                align-items: center;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-flex-direction: row;
+                -ms-flex-direction: row;
+                flex-direction: row;
+                -webkit-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+                text-align: left;
+            }
+
+            .card-profile-stats .card-profile-stats-intro .card-profile-stats-intro-pic {
+                margin: 0 1.25rem 0 0;
+                max-width: 250px;
+            }
+
+            .card-profile-stats .card-profile-stats-container {
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-justify-content: space-around;
+                -ms-flex-pack: distribute;
+                justify-content: space-around;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: #E6E8EB">
+<nav class="top-bar topbar-responsive" style="height: 6%">
+    <div class="top-bar-title">
+    <span data-responsive-toggle="topbar-responsive" data-hide-for="medium">
+      <button class="menu-icon" type="button" data-toggle></button>
+    </span>
+        <a class="topbar-responsive-logo" href="#"><strong style="font-size: larger">幼儿园管理系统 </strong></a>
+    </div>
+    <div id="topbar-responsive" class="topbar-responsive-links">
+        <div class="top-bar-right">
+            <ul class="menu simple vertical medium-horizontal">
+                <li><a href="#" id="logout">注销</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="grid-x" style="height: 94%">
+    <div class="off-canvas-wrapper" style="width: 100%">
+        <div style="" class="off-canvas-absolute position-left reveal-for-large  reveal-for-medium " data-off-canvas="">
+            <div class="grid-y grid-padding-y grid-padding-x">
+                <div class="thumbnail" style="margin:10% 31% 0% auto;">
+                    <img id="loginPic" src="" style="width: 120px;height: 100px" alt='暂未录入照片'>
+                </div>
+                <span style="margin-left: 10%;margin-top: 5%" id="loginHumanInfo">
+
+                </span>
+                <hr style="width: 80%;margin-top: 1%"/>
+                <div class="cell auto">
+                    <ul class="mtree jet" id="leftTree" style="padding: 0px;font-size: large">
+                        <li><a href="#">实体管理</a>
+                            <ul>
+                                <li id="humanManagementMenuBtn" access="4"><a href="#">人员管理</a></li>
+                                <li id="schoolManagementMenuBtn" access="1"><a href="#">学校管理</a></li>
+                                <li id="gradeManagementMenuBtn" access="2"><a href="#">年级管理</a></li>
+                                <li id="classManagementMenuBtn" access="2"><a href="#">班级管理</a></li>
+                                <li id="facilityManagementMenuBtn" access="1"><a href="#">设备管理</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">进出信息</a>
+                            <ul>
+                                <li id="inoutManagement_atSchoolSearchMenuBtn"><a href="#">人员在位信息</a></li>
+                                <li id="inoutManagement_record_historyMenuBtn"><a href="#">人员出入记录</a></li>
+                            </ul>
+                        </li>
+                        <li id="applyManagementMenuBtn"><a href="#">申请审核</a></li>
+                        <li id="upLoadManagementMenuBtn" access="2"><a href="#">文件上传</a></li>
+                        <li><a href="#">消息推送</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="" class="off-canvas-content has-reveal-left" data-off-canvas-content="">
+            <div id="entityManagement" class="grid-container" style="margin-top: 2rem">
+                <div style="display: none" id="humanManagement" class="grid-x grid-margin-x" style="margin-top: 2rem">
+                    <div class="small-12 cell">
+                        <fieldset class="fieldset grid-x grid-margin-x" id="human_manage_human_info">
+
+                            <div class="medium-3 cell ">
+                                <label>姓名
+                                    <input id="entityManagementHuman_humanname" type="text" placeholder="">
+                                </label>
+                            </div>
+                            <div class="medium-3 cell large-offset-1">
+                                <label>电话
+                                    <input id="entityManagementHuman_phonenum" type="text" placeholder="">
+                                </label>
+                            </div>
+                            <div class="medium-3 cell large-offset-1">
+                                <label>人员类别
+                                    <select id="entityManagementHuman_humantype">
+
+
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div id="entityManagementHuman_schooldiv" class="medium-3 cell ">
+                                <label>学校
+                                    <select id="entityManagementHuman_school">
+
+
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div id="entityManagementHuman_gradediv" access="4" class="medium-3 cell large-offset-1">
+                                <label>年级
+                                    <select id="entityManagementHuman_grade">
+
+
+                                    </select>
+                                </label>
+                            </div>
+                            <div access="4" class="medium-3 cell large-offset-1">
+                                <label>班级
+                                    <select id="entityManagementHuman_class">
+
+
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="expanded button-group medium-3 cell large-offset-4" style="margin-top: 3%">
+                                <button type="button" id="entityManagementHuman_searchBtn"
+                                        class="success  button hollow">查询
+                                </button>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div id="entityManagementHuman_searchResult" class="large-offset-1 small-10 cell"
+                         style="margin-top: 2%;display: none">
+                        <table class="dashboard-table">
+                            <colgroup>
+                                <col width="13%">
+                                <col width="15%">
+                                <col width="20%">
+                                <col width="20%">
+                                <col width="13%">
+                                <col width="12%">
+                                <col width="8%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><a href="#">录入照 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">姓名 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">手机号 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">注册时间 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">人员类别 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">权限 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">选择 <i class="fa fa-caret-down"></i></a></th>
+                            </tr>
+                            </thead>
+                            <tbody id="entityManagementHuman_searchResult_body">
+                            <!--<tr>-->
+
+                                <!--<td>-->
+                                    <!--<div class="flex-child-shrink">-->
+                                        <!--<img style="height: 120px;width:100px;margin-bottom: 0rem;height: 100%"-->
+                                             <!--class="thumbnail"-->
+                                             <!--src='kid_singing_in_walmart.jpg'>-->
+                                    <!--</div>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--狗蛋-->
+                                <!--</td>-->
+                                <!--<td>18907489183</td>-->
+                                <!--<td>2018-10-21</td>-->
+                                <!--<td>老师</td>-->
+                                <!--<td>班主任</td>-->
+                                <!--<td style="margin-top: 1rem;text-align: center"><input id="123"-->
+                                                                                       <!--style="margin-top: 1rem;"-->
+                                                                                       <!--type="checkbox"></td>-->
+                            <!--</tr>-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="display: none" id="schoolManagement" class="grid-x grid-margin-x" style="margin-top: 2rem">
+                    <div class="input-group input-group-rounded large-offset-1 small-4 cell">
+                        <input class="input-group-field" type="search">
+                        <div class="input-group-button">
+                            <input type="submit" class="button secondary" value="查询" style="font-size: 1rem">
+                        </div>
+                    </div>
+                    <div id="entityManagementSchool_searchResult" class="large-offset-1 small-10 cell"
+                         style="margin-top: 2%;display: none">
+                        <table class="dashboard-table">
+                            <colgroup>
+                                <col width="12%">
+                                <col width="13%">
+                                <col width="25%">
+                                <col width="20%">
+                                <col width="8%">
+                                <col width="8%">
+                                <col width="8%">
+                                <col width="6%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><a href="#">省 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">市 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">地址 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">名称 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">教工数 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">幼儿数 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">家长数 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">选择 <i class="fa fa-caret-down"></i></a></th>
+                            </tr>
+                            </thead>
+                            <tbody id="entityManagementSchool_searchResult_body">
+
+                            <!--<tr>-->
+                                <!--<td>-->
+                                    <!--湖南省-->
+                                <!--</td>-->
+                                <!--<td>长沙市</td>-->
+                                <!--<td>开福区</td>-->
+                                <!--<td>奥特曼幼儿园</td>-->
+                                <!--<td style="text-align: center">11</td>-->
+                                <!--<td style="text-align: center">12</td>-->
+                                <!--<td style="text-align: center">13</td>-->
+                                <!--<td style="margin-top: 1rem;text-align: center"><input style="margin-top: 1rem;"-->
+                                                                                       <!--type="checkbox"></td>-->
+                            <!--</tr>-->
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="display: none" id="gradeManagement" class="grid-x grid-margin-x" style="margin-top: 2rem">
+                    <div class="small-3 cell large-offset-1">
+                        <select name="" id="gradeManagement_schoolID" style="">
+                            <option value="0">请选择学校</option>
+                        </select>
+                    </div>
+
+                    <div id="entityManagementGrade_searchResult" class="large-offset-1 small-10 cell"
+                         style="margin-top: 2%;display: none">
+                        <table class="dashboard-table">
+                            <colgroup>
+                                <col width="25%">
+                                <col width="20%">
+                                <col width="22%">
+                                <col width="15%">
+                                <col width="10%">
+                                <col width="8%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><a href="#">学校名 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">年级名 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">创建时间 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">年级号 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">班级数 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">选择 <i class="fa fa-caret-down"></i></a></th>
+                            </tr>
+                            </thead>
+                            <tbody id="entityManagementGrade_searchResult_body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="display: none" id="classManagement" class="grid-x grid-margin-x" style="margin-top: 2rem">
+                    <div class="small-5 cell large-offset-1">
+                        <select name="" id="classManagement_schoolID" style="width: 50%">
+                            <option value="">请选择学校</option>
+                        </select>
+                        -
+                        <select name="" id="classManagement_gradeID" style="width: 40%">
+                            <option value="">请选择年级</option>
+                        </select>
+                    </div>
+
+                    <div id="entityManagementClass_searchResult" class="large-offset-1 small-10 cell"
+                         style="margin-top: 2%;display: none">
+                        <table class="dashboard-table">
+                            <colgroup>
+
+                                <col width="20%">
+                                <col width="30%">
+                                <col width="20%">
+                                <col width="12%">
+                                <col width="10%">
+                                <col width="8%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><a href="#">班级号 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">班级名 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">创建时间 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">创建人 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">班级人数 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">选择 <i class="fa fa-caret-down"></i></a></th>
+                            </tr>
+                            </thead>
+                            <tbody id="entityManagementClass_searchResult_body">
+                            <tr>
+
+                                <td>小班</td>
+                                <td>01班</td>
+                                <td>2018-10-15</td>
+                                <td>迪迦奥特曼</td>
+                                <td style="text-align: center">2</td>
+                                <td style="margin-top: 1rem;text-align: center"><input style="margin-top: 1rem;"
+                                                                                       type="checkbox"></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="display: none" id="facilityManagement" class="grid-x grid-margin-x"
+                     style="margin-top: 2rem">
+
+                    <div class="small-3 cell large-offset-1">
+                        <select name="" id="facilityManagement_schoolID" style="">
+                            <option value="">请选择学校</option>
+                        </select>
+                    </div>
+
+                    <div id="entityManagementFacility_searchResult" class="large-offset-1 small-10 cell"
+                         style="margin-top: 2%;display: none">
+                        <table class="dashboard-table">
+                            <colgroup>
+                                <col width="20%">
+                                <col width="20%">
+                                <col width="22%">
+                                <col width="10%">
+                                <col width="20%">
+                                <col width="8%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><a href="#">学校名 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">MAC地址 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">注册时间 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">注册人 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">数据更新时间 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">选择 <i class="fa fa-caret-down"></i></a></th>
+                            </tr>
+                            </thead>
+                            <tbody id="entityManagementFacility_searchResult_body">
+                            <!--<tr>-->
+                                <!--<td>-->
+                                    <!--奥特曼幼儿园-->
+                                <!--</td>-->
+                                <!--<td>123123123</td>-->
+                                <!--<td>2018-10-15</td>-->
+                                <!--<td>迪迦奥特曼</td>-->
+                                <!--<td><img src="img/online.png" alt="" style="width: 32px;height:32px"></td>-->
+                                <!--<td style="margin-top: 1rem;text-align: center"><input style="margin-top: 1rem;"-->
+                                                                                       <!--type="checkbox"></td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>-->
+                                    <!--奥特曼幼儿园-->
+                                <!--</td>-->
+                                <!--<td>123123123</td>-->
+                                <!--<td>2018-10-15</td>-->
+                                <!--<td>迪迦奥特曼</td>-->
+                                <!--<td><img src="img/offline.png" alt="" style="width: 32px;height:32px"></td>-->
+                                <!--<td style="margin-top: 1rem;text-align: center"><input style="margin-top: 1rem;"-->
+                                                                                       <!--type="checkbox"></td>-->
+                            <!--</tr>-->
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="entityManagementResult" class="grid-x grid-margin-x" style="display: none;">
+                    <div id="entityManagement_manipulateBtns" class="large-offset-1 small-4 cell"
+                         style="margin-top: 2%">
+                        <button type="button" id="addEntityItem" class=" button"><span>新增 </span><i
+                                class="fa fa-plus"></i></button>
+                        <button id="selectAll" class=" button " style="margin-left: 10%">
+                            <span>全选/取消 </span><i
+                                class="fa fa-mouse-pointer"></i></button>
+                        <button id="deleteEntityItem" class=" button" style="margin-left: 10%">
+                            <span>删除 </span><i
+                                class="fa fa-minus"></i></button>
+                    </div>
+                    <div class="large-offset-2 small-4 cell" style="margin-top: 2%">
+
+                        <nav aria-label="Pagination">
+                            <ul class="pagination" style="text-align: center">
+                                <li id="paginationPrevious" class="pagination-previous disabled"
+                                    style="font-size: 1rem;">上一页 <span
+                                        class="show-for-sr">page</span></li>
+                                <li style="margin: 0 2%">
+                                    <select name="" id="paginationSelectNum"></select>
+                                </li>
+                                <li style="margin: 0 2%">
+                                    <button id="paginationChangePageBtn" type="button"
+                                            class="button-hover-addcart button"><span>GO</span><i
+                                            class="fa fa-play"></i></button>
+                                </li>
+                                <li id="paginationNext" class="pagination-next" style="font-size: 1rem;">下一页
+                                    <span class="show-for-sr">page</span></li>
+                            </ul>
+                        </nav>
+
+                    </div>
+                </div>
+            </div>
+            <div id="inoutManagement" class="grid-container" style="margin-top: 2rem">
+                <fieldset id="inoutManagement_atSchoolSearch" class="fieldset grid-x grid-margin-x"
+                          style="display: none">
+                    <div class="medium-2 cell ">
+                        <label>姓名
+                            <input id="atSchoolSearch_humanname" type="text" placeholder="">
+                        </label>
+                    </div>
+                    <div class="medium-2 cell large-offset-1">
+                        <label>人员类别
+                            <select id="atSchoolSearch_humantype">
+                                <option value="0">学生</option>
+                                <option value="2">老师</option>
+                                <option value="5">其他人员</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="medium-2 cell large-offset-1">
+                        <label>电话
+                            <input id="atSchoolSearch_tel" type="text" placeholder="">
+                        </label>
+                    </div>
+                    <div class="medium-2 cell large-offset-1">
+                        <label>是否在校
+                            <select id="atSchoolSearch_atschool">
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                                <option value="-1">全部</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="medium-2 cell" access="1">
+                        <label>学校
+                            <select id="atSchoolSearch_school">
+
+                            </select>
+                        </label>
+                    </div>
+                    <div class="medium-2 cell ">
+                        <label>年级
+                            <select id="atSchoolSearch_grade">
+
+                            </select>
+                        </label>
+                    </div>
+                    <div class="medium-2 cell large-offset-1">
+                        <label>班级
+                            <select id="atSchoolSearch_class">
+
+                            </select>
+                        </label>
+                    </div>
+                    <div class="medium-2 cell large-offset-1">
+                    </div>
+                    <div class="expanded button-group medium-3 cell large-offset-4" style="margin-top: 3%">
+                        <a id="atSchoolSearch_searchBtn" class="success  button hollow">查询</a>
+                    </div>
+                </fieldset>
+                <fieldset class="fieldset grid-x grid-margin-x" style="display:none"
+                          id="inoutManagement_record_history">
+
+                    <div class="medium-2 cell ">
+                        <label>姓名
+                            <input id="inoutManagement_record_history_humanname" type="text" placeholder="">
+                        </label>
+                    </div>
+                    <div class="medium-2 cell large-offset-1">
+                        <label>人员类别
+                            <select id="inoutManagement_record_history_humantype">
+                                <option value="0">学生</option>
+                                <option value="1">家长</option>
+                                <option value="2">老师</option>
+                                <option value="5">其他人员</option>
+                                <option value="6">陌生人</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="medium-2 cell large-offset-1">
+                        <label>记录类别
+                            <select id="inoutManagement_record_history_delivertype">
+                                <option value="1">接送</option>
+                                <option value="0">单独出入</option>
+                                <option value="2">校车接送</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="medium-2 cell large-offset-1">
+                        <label>进出类别
+                            <select id="inoutManagement_record_history_accesstype">
+                                <option value="0">出</option>
+                                <option value="1">入</option>
+                                <option value="-1">全部</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="medium-2 cell  ">
+                        <label>是否正常记录
+                            <select id="inoutManagement_record_history_check_result">
+                                <option value="1">正常</option>
+                                <option value="0">异常</option>
+                                <option value="2">陌生人</option>
+                                <option value="-1">全部</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="medium-3 cell large-offset-1">
+                        <label>起始时间
+                            <input id="inoutManagement_record_history_starttime" type="date" placeholder="">
+                        </label>
+                    </div>
+                    <div class="medium-3 cell large-offset-1">
+                        <label>终止时间
+                            <input id="inoutManagement_record_history_endtime" type="date">
+                        </label>
+                    </div>
+
+
+                    <div class="expanded button-group medium-3 cell large-offset-4 " style="margin-top: 3%">
+                        <a id="inoutManagement_record_history_searchBtn" class="success  button hollow">查询</a>
+                    </div>
+
+
+                </fieldset>
+                <fieldset class="fieldset grid-x grid-margin-x" id="inoutManagement_searchResult" style="display:none">
+                </fieldset>
+            </div>
+            <div id="applyManagement" class="grid-container" style="margin-top: 2rem;display: none">
+                <div class="grid-margin-x grid-x">
+                    <div class="small-3 cell large-offset-1">
+                        <select id="applyManagement_applyType" style="">
+                            <option value="-1">申请类别</option>
+                            <option value="0">注册申请</option>
+                            <!--<option value="1">权限申请</option>-->
+                        </select>
+                    </div>
+                    <div class=" button-group medium-2 cell ">
+                        <a id="applyManagement_searchBtn" class="expanded primary  button hollow">查询</a>
+                    </div>
+                </div>
+                <div id="applyManagement_searchResult" class="grid-margin-x grid-x"
+                     style="margin-top: 2%;display: none">
+                    <div class="large-offset-1 small-10 cell">
+                        <table class="dashboard-table">
+                            <colgroup>
+                                <col width="15%">
+                                <col width="15%">
+                                <col width="15%">
+                                <col width="12%">
+                                <col width="15%">
+                                <col width="20%">
+                                <col width="8%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><a href="#">申请时间 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">申请人照片 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">姓名 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">权限 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">电话 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">申请信息 <i class="fa fa-caret-down"></i></a></th>
+                                <th><a href="#">选择 <i class="fa fa-caret-down"></i></a></th>
+                            </tr>
+                            </thead>
+                            <tbody id="applyManagement_searchResult_body">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="applyManagement_manipulateBtns" class="large-offset-1 small-5 cell" style="margin-top: 2%">
+                        <button id="applyApproval" class=" button"><span>审核通过 </span><i
+                                class="fa fa-check"></i>
+                        </button>
+                        <button id="applySelectAll" class=" button " style="margin-left: 10%"><span>全选/取消 </span><i
+                                class="fa fa-mouse-pointer"></i></button>
+                        <button id="applyReject" class=" button" style="margin-left: 10%"><span>审核不通过 </span><i
+                                class="fa fa-times"></i></button>
+
+                    </div>
+                    <div id="applyPagination" class="large-offset-1 small-4 cell" style="margin-top: 2%">
+
+                        <nav aria-label="Pagination">
+                            <ul class="pagination" style="text-align: center">
+                                <li id="applyPaginationPrevious" class="pagination-previous disabled"
+                                    style="font-size: 1rem;">上一页 <span
+                                        class="show-for-sr">page</span></li>
+                                <li style="margin: 0 2%">
+                                    <select id="applyPaginationSelectNum">
+                                        <option value="1">1</option>
+                                        <option value="1">1</option>
+                                    </select>
+                                </li>
+                                <li style="margin: 0 2%">
+                                    <button id="applyPaginationChangePageBtn" type="button"
+                                            class="button-hover-addcart button"><span>GO</span><i
+                                            class="fa fa-play"></i></button>
+                                </li>
+                                <li id="applyPaginationNext" class="pagination-next" style="font-size: 1rem;">下一页
+                                    <span class="show-for-sr">page</span></li>
+                            </ul>
+                        </nav>
+
+                    </div>
+                </div>
+            </div>
+            <div id="upLoadManagement" class="grid-container" style="margin-top: 5rem;display: none">
+                <div class="grid-margin-x grid-x">
+                    <div class="small-5 large-offset-1 cell" access="2">
+                        <form>
+                            <div class="grid-x grid-padding-x">
+                                <div class="small-6 cell" access="1">
+                                    <select name="" id="pichSchool">
+                                    </select>
+                                </div>
+                                <div class="small-6 cell" access="1">
+                                </div>
+                                <div class="small-3 cell">
+                                    <label for="batchImportFileUpload" class="text-left middle">批量录入</label>
+                                </div>
+
+                                <div class="small-9 cell">
+                                    <label for="batchImportFileUpload" class="button">选择文件</label>
+                                    <input type="file" id="batchImportFileUpload" class="show-for-sr">
+                                    <span id="picFileName"></span>
+                                </div>
+                                <div class="small-8 cell">
+                                    <button id="batchImportFileUploadBtn" type="button" class="success button">上传
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="small-5 large-offset-1 cell" access="1">
+                        <form>
+                            <div class="grid-x grid-padding-x">
+                                <div class="small-6 cell" access="1">
+                                    <select name="" id="adPichSchool">
+
+                                    </select>
+                                </div>
+                                <div class="small-6 cell" access="1">
+                                </div>
+                                <div class="small-3 cell">
+                                    <label for="batchImportADUpload" class="text-left middle">广告上传</label>
+                                </div>
+                                <div class="small-9 cell">
+                                    <label for="batchImportADUpload" class="button">选择文件</label>
+                                    <input type="file" id="batchImportADUpload" class="show-for-sr">
+                                    <span id="adFileName"></span>
+                                </div>
+                                <div class="small-8 cell">
+                                    <button id="batchImportADUploadBtn" type="button" class="success button">上传</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="small-5 large-offset-1 cell" access="1" style="margin-top: 5rem">
+                        <form>
+                            <div class="grid-x grid-padding-x">
+                                <div class="small-3 cell">
+                                    <label for="appVersion" class="text-left middle">版本号</label>
+                                </div>
+                                <div class="small-4 cell">
+                                    <input id="appVersion" type="text" placeholder="请输入版本号">
+                                </div>
+                                <div class="small-4 cell">
+                                    <select name="" id="appOS">
+                                        <option value="ios">IOS</option>
+                                        <option value="andriod">Andriod</option>
+                                    </select>
+                                </div>
+                                <div class="small-3 cell">
+                                    <label for="uploadApp" class="text-left middle">app上传</label>
+                                </div>
+                                <div class="small-9 cell">
+                                    <label for="uploadApp" class="button">选择文件</label>
+                                    <input type="file" id="uploadApp" class="show-for-sr">
+                                    <span id="appFileName"></span>
+                                </div>
+                                <div class="small-8 cell">
+                                    <button id="uploadAppBtn" type="button" class="success button">上传</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--<div class="small-8 cell large-offset-1" access="2">-->
+                    <!--<form>-->
+                    <!--<div class="grid-x grid-padding-x">-->
+                    <!--<div class="small-3 cell" access="1">-->
+                    <!--<select name="" id="pichSchool">-->
+
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="small-8 cell" access="1">-->
+                    <!--</div>-->
+                    <!--<div class="small-2 cell">-->
+                    <!--<label for="batchImportFileUpload" class="text-left middle">批量录入</label>-->
+                    <!--</div>-->
+
+                    <!--<div class="small-9 cell">-->
+                    <!--<label for="batchImportFileUpload" class="button">选择文件</label>-->
+                    <!--<input type="file"  id="batchImportFileUpload" class="show-for-sr">-->
+                    <!--<span id="picFileName"></span>-->
+                    <!--</div>-->
+                    <!--<div class="small-8 cell">-->
+                    <!--<button id="batchImportFileUploadBtn" type="button" class="success button">上传</button>-->
+                    <!--</div>-->
+
+                    <!--</div>-->
+                    <!--</form>-->
+                    <!--</div>-->
+                    <!--<div class="small-8 cell large-offset-1" access="1" style="margin-top: 7%">-->
+                    <!--<form>-->
+                    <!--<div class="grid-x grid-padding-x">-->
+                    <!--<div class="small-3 cell" access="1">-->
+                    <!--<select name="" id="adPichSchool">-->
+
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="small-8 cell" access="1">-->
+                    <!--</div>-->
+                    <!--<div class="small-2 cell">-->
+                    <!--<label for="batchImportADUpload" class="text-left middle">广告上传</label>-->
+                    <!--</div>-->
+                    <!--<div class="small-9 cell">-->
+                    <!--<label for="batchImportADUpload" class="button">选择文件</label>-->
+                    <!--<input type="file"  id="batchImportADUpload" class="show-for-sr">-->
+                    <!--<span id="adFileName"></span>-->
+                    <!--</div>-->
+                    <!--<div class="small-8 cell">-->
+                    <!--<button id="batchImportADUploadBtn" type="button" class="success button">上传</button>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</form>-->
+                    <!--</div>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="addEntityHuman" class="translucent-form-overlay reveal" data-reveal>
+    <form class="grid-container">
+        <h3>新增人员</h3>
+        <div class="row columns">
+            <label>姓名
+                <input id="addEntityHuman_humanName" type="text" name="taskType" placeholder="姓名">
+            </label>
+        </div>
+        <div class="row columns">
+            <label>头像
+                <input type="file" name="file" onchange="imgPreview(this,'add')"/>
+            </label>
+            <img class="thumbnail" id="addEntityHuman_facePic" src="" alt=""
+                 style="margin-left: 5rem; height: 200px; width: 250px;display: none">
+        </div>
+        <div class="row columns">
+            <label>人员类别
+                <select id="addEntityHuman_manageType">
+                    <option value="-1">请选择人员类型</option>
+                    <option value="1" access="1">超级管理员</option>
+                    <option value="2" access="1">园方管理员</option>
+                    <option value="3" access="2">班主任</option>
+                    <option value="4" access="2">普通老师</option>
+                    <option value="5">家长</option>
+                    <option value="6">家属</option>
+                    <option value="0">学生</option>
+                </select>
+            </label>
+        </div>
+        <div class="row columns" id="addEntityHuman_schoolDiv" style="display: none">
+            <label>学校
+                <select id="addEntityHuman_school">
+                </select>
+            </label>
+        </div>
+        <div class="row columns" id="addEntityHuman_gradeDiv" style="display: none">
+            <label>年级
+                <select id="addEntityHuman_grade">
+                </select>
+            </label>
+        </div>
+        <div class="row columns" id="addEntityHuman_classDiv" style="display: none">
+            <label>班级
+                <select id="addEntityHuman_class">
+                </select>
+            </label>
+        </div>
+        <div class="row columns" id="addEntityHuman_parentNameDiv" style="display: none">
+            <label>家长姓名
+                <input id="addEntityHuman_parentName" type="text" placeholder="家长姓名">
+            </label>
+        </div>
+        <div class="row columns" id="addEntityHuman_parentTelDiv" style="display: none">
+            <label>家长电话
+                <input id="addEntityHuman_parentTel" type="text" placeholder="家长手机号">
+            </label>
+        </div>
+        <div class="row columns" id="addEntityHuman_telDiv" style="display: none">
+            <label>手机号
+                <input id="addEntityHuman_tel" type="text" placeholder="手机号">
+            </label>
+        </div>
+        <div class="row columns" id="addEntityHuman_passwordDiv" style="display: none">
+            <label>密码
+                <input id="addEntityHuman_password" type="password" name="taskType" placeholder="密码">
+            </label>
+        </div>
+        <button id="addEntityHuman_addBtn" type="button" class="primary button expanded search-button">
+            新增
+        </button>
+    </form>
+</div>
+<div id="addEntitySchool" class="translucent-form-overlay reveal" data-reveal>
+    <form class="grid-container">
+        <h3>新增学校</h3>
+        <div class="row columns">
+            <label>学校名称
+                <input id="addEntitySchool_schoolName" type="text" placeholder="学校名称">
+            </label>
+        </div>
+        <div class="row columns">
+            <label>校长
+                <input id="addEntitySchool_president" type="text" name="taskType" placeholder="校长">
+            </label>
+        </div>
+        <div class="row columns">
+            <label>地址
+                <input id="addEntitySchool_address" type="text" name="taskType" placeholder="地址">
+            </label>
+        </div>
+
+        <button id="addEntitySchool_addBtn" type="button" class="primary button expanded search-button">
+            新增
+        </button>
+
+    </form>
+</div>
+<div id="addEntityGrade" class="translucent-form-overlay reveal" data-reveal>
+    <form class="grid-container">
+        <h3>新增年级</h3>
+        <div class="row columns">
+            <label>年级编号
+                <input id="addEntityGrade_gradeNum" type="number" placeholder="年级编号">
+            </label>
+        </div>
+        <div class="row columns">
+            <label>年级名称
+                <input id="addEntityGrade_gradeName" type="text" placeholder="年级名称">
+            </label>
+        </div>
+        <button id="addEntityGrade_addBtn" type="button" class="primary button expanded search-button">
+            新增
+        </button>
+    </form>
+</div>
+<div id="addEntityClass" class="translucent-form-overlay reveal" data-reveal>
+    <form class="grid-container">
+        <h3>新增班级</h3>
+
+        <div class="row columns">
+            <label>班级编号
+                <input id="addEntityClass_classNum" type="text" placeholder="班级编号">
+            </label>
+        </div>
+        <div class="row columns">
+            <label>班级名称
+                <input id="addEntityClass_className" type="text" name="taskType" placeholder="班级名称">
+            </label>
+        </div>
+        <button id="addEntityClass_addBtn" type="button" class="primary button expanded search-button">
+            新增
+        </button>
+
+    </form>
+</div>
+<div id="addEntityFacility" class="translucent-form-overlay reveal" data-reveal>
+    <form class="grid-container">
+        <h3>新增设备</h3>
+        <div class="row columns">
+            <label>MAC地址
+                <input id="addEntityFacility_macName" type="text" placeholder="MAC地址">
+            </label>
+        </div>
+
+        <button id="addEntityFacility_addBtn" type="button" class="primary button expanded search-button">
+            新增
+        </button>
+
+    </form>
+</div>
+
+<div id="editEntityHuman" class="translucent-form-overlay reveal" data-reveal>
+    <input type="hidden" id="editEntityHuman_humanID">
+    <form class="grid-container">
+        <h3>人员信息更改</h3>
+        <div class="row columns">
+            <label>姓名
+                <input id="editEntityHuman_humanName" type="text" name="taskType" placeholder="姓名">
+            </label>
+        </div>
+        <div class="row columns">
+            <label>头像
+                <input id="" type="file" name="file" onchange="imgPreview(this,'edit')"/>
+            </label>
+            <input id="editFaceChangeFlag" type="hidden" value="false">
+            <img class="thumbnail" id="editEntityHuman_facePic" src="" alt=""
+                 style="margin-left: 5rem; height: 200px; width: 250px">
+        </div>
+
+        <div class="row columns">
+            <label>人员类别
+                <select id="editEntityHuman_manageType">
+                    <option value="1" access="1">超级管理员</option>
+                    <option value="2" access="1">园方管理员</option>
+                    <option value="3" access="2">班主任</option>
+                    <option value="4" access="2">普通老师</option>
+                    <option value="5">家长</option>
+                    <option value="6">家属</option>
+                    <option value="0">学生</option>
+                </select>
+            </label>
+        </div>
+        <div class="row columns" id="editEntityHuman_schoolDiv" style="display: none">
+            <label>学校
+                <select id="editEntityHuman_school">
+                </select>
+            </label>
+        </div>
+        <div class="row columns" id="editEntityHuman_gradeDiv" style="display: none">
+            <label>年级
+                <select id="editEntityHuman_grade">
+                </select>
+            </label>
+        </div>
+        <div class="row columns" id="editEntityHuman_classDiv" style="display: none">
+            <label>班级
+                <select id="editEntityHuman_class">
+                </select>
+            </label>
+        </div>
+        <!--<div class="row columns" id="editEntityHuman_parentNameDiv" style="display: none">-->
+        <!--<label>家长姓名-->
+        <!--<input id="editEntityHuman_parentName" type="text" placeholder="家长姓名">-->
+        <!--</label>-->
+        <!--</div>-->
+        <!--<div class="row columns" id="editEntityHuman_parentTelDiv" style="display: none">-->
+        <!--<label>家长电话-->
+        <!--<input id="editEntityHuman_parentTel" type="text" placeholder="家长手机号">-->
+        <!--</label>-->
+        <!--</div>-->
+        <div class="row columns" id="editEntityHuman_telDiv" style="display: none">
+            <label>手机号
+                <input id="editEntityHuman_tel" type="text" placeholder="手机号">
+            </label>
+        </div>
+        <div class="row columns" id="editEntityHuman_passwordDiv" style="display: none">
+            <label>密码
+                <input id="editEntityHuman_password" type="password" name="taskType" placeholder="密码">
+            </label>
+        </div>
+        <button id="editEntityHuman_saveBtn" type="button" class="primary button expanded search-button">
+            保存
+        </button>
+
+    </form>
+</div>
+<div id="editEntitySchool" class="translucent-form-overlay reveal" data-reveal>
+    <input type="hidden" id="editEntitySchool_schoolID">
+    <form class="grid-container">
+        <h3>学校信息修改</h3>
+        <div class="row columns">
+            <label>学校名称
+                <input id="editEntitySchool_schoolName" type="text" placeholder="学校名称">
+            </label>
+        </div>
+        <div class="row columns">
+            <label>校长
+                <input id="editEntitySchool_president" type="text" name="taskType" placeholder="校长">
+            </label>
+        </div>
+        <div class="row columns">
+            <label>地址
+                <input id="editEntitySchool_address" type="text" name="taskType" placeholder="地址">
+            </label>
+        </div>
+
+        <button id="editEntitySchool_addBtn" type="button" class="primary button expanded search-button">
+            保存
+        </button>
+
+    </form>
+</div>
+<div id="editEntityGrade" class="translucent-form-overlay reveal" data-reveal>
+    <input type="hidden" id="editEntitySchool_gradeID">
+    <form class="grid-container">
+        <h3>年级信息修改</h3>
+        <div class="row columns">
+            <label>年级编号
+                <input id="editEntityGrade_gradeNum" type="number" placeholder="年级编号">
+            </label>
+        </div>
+        <div class="row columns">
+            <label>年级名称
+                <input id="editEntityGrade_gradeName" type="text" placeholder="年级名称">
+            </label>
+        </div>
+        <button id="editEntityGrade_saveBtn" type="button" class="primary button expanded search-button">
+            保存
+        </button>
+    </form>
+</div>
+<div id="editEntityClass" class="translucent-form-overlay reveal" data-reveal>
+    <input type="hidden" id="editEntitySchool_classID">
+    <form class="grid-container">
+        <h3>班级信息修改</h3>
+
+        <div class="row columns">
+            <label>班级编号
+                <input id="editEntityClass_classNum" type="text" placeholder="班级编号">
+            </label>
+        </div>
+        <div class="row columns">
+            <label>班级名称
+                <input id="editEntityClass_className" type="text" name="taskType" placeholder="班级名称">
+            </label>
+        </div>
+        <button id="editEntityClass_saveBtn" type="button" class="primary button expanded search-button">
+            保存
+        </button>
+
+    </form>
+</div>
+<div id="editEntityFacility" class="translucent-form-overlay reveal" data-reveal>
+    <input type="hidden" id="editEntitySchool_facilityID">
+    <form class="grid-container">
+        <h3>设备信息修改</h3>
+        <div class="row columns">
+            <label>MAC地址
+                <input id="editEntityFacility_macName" type="text" placeholder="MAC地址">
+            </label>
+        </div>
+
+        <button id="editEntityFacility_addBtn" type="button" class="primary button expanded search-button">
+            保存
+        </button>
+
+    </form>
+</div>
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/what-input/dist/what-input.js"></script>
+<script src="node_modules/foundation-sites/dist/js/foundation.js"></script>
+<script src="js/app.js"></script>
+<script src="js/simplePagination.js"></script>
+<script src="js/set.js"></script>
+<script src="js/toast.js"></script>
+<script src="js/mustache.js"></script>
+<script src="js/zeroModal.js"></script>
+<script src="js/mainPageFun.js"></script>
+<script src="js/myEvents.js"></script>
+<script>
+    $("#logout").click(function () {
+        sessionStorage.token = '';
+        sessionStorage.loginID = '';
+        sessionStorage.setItem('humanType', '');
+        window.location.href = "loginPage.html";
+    })
+</script>
+</body>
+</html>
